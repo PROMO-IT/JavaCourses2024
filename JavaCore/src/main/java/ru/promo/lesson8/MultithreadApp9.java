@@ -1,19 +1,15 @@
-package ru.promo.lesson7;
+package ru.promo.lesson8;
 
-import java.util.Map;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class MultithreadApp3 {
-    private static volatile int a = 0;
+public class MultithreadApp9 {
+    private static AtomicInteger a = new AtomicInteger(0);
     public static void main(String[] args) throws InterruptedException {
-        ReentrantLock lock = new ReentrantLock();
         Runnable runnable = new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < 100000; i++) {
-                    lock.lock();
-                    a++;
-                    lock.unlock();
+                    a.incrementAndGet();
                 }
             }
         };
@@ -22,9 +18,7 @@ public class MultithreadApp3 {
             @Override
             public void run() {
                 for (int i = 0; i < 100000; i++) {
-                    lock.lock();
-                    a--;
-                    lock.unlock();
+                    a.decrementAndGet();
                 }
             }
         };
