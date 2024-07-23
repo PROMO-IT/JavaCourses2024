@@ -2,7 +2,7 @@ package ru.promo.lesson8;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class MultithreadApp9 {
+public class MultithreadApp7 {
     private static AtomicInteger a = new AtomicInteger(0);
     public static void main(String[] args) throws InterruptedException {
         Runnable runnable = new Runnable() {

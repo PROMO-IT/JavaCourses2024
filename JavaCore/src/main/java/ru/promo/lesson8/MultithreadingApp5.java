@@ -32,8 +32,6 @@ public class MultithreadingApp5 {
         Future<Integer> result3 = executorService.submit(callable);
         System.out.println("result3 = " + result3.get());
 
-
-
         executorService.shutdown();
     }
 }
