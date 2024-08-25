@@ -3,7 +3,7 @@ package ru.promo.homework.danilKraun;
 import java.io.Serializable;
 import java.util.*;
 
-public class CustomMap<K, V> extends AbstractMap<K,V> implements Map<K,V>, Cloneable, Serializable {
+public class DanilKraunMap<K, V> extends AbstractMap<K,V> implements Map<K,V>, Cloneable, Serializable {
     private class MapNode<K, V> implements Map.Entry<K, V>{
         final K key;
         V value;
@@ -34,10 +34,10 @@ public class CustomMap<K, V> extends AbstractMap<K,V> implements Map<K,V>, Clone
     private int size;
     private MapNode<K, V>[] nodes;
 
-    public CustomMap(){
+    public DanilKraunMap(){
         nodes = new MapNode[capacity];
     }
-    public CustomMap(int capacity) throws NegativeArraySizeException {
+    public DanilKraunMap(int capacity) throws NegativeArraySizeException {
         this.capacity = capacity;
         nodes = new MapNode[capacity];
     }
