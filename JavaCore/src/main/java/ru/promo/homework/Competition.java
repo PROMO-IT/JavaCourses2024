@@ -16,29 +16,69 @@ import ru.promo.homework.vladislove073.Vladislove073Map;
 import ru.promo.homework.ya5uhiro.Ya5uhiroMap;
 import ru.promo.homework.ziraelc.ZiraelcMap;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Competition {
-    private final static List<Map<String, Task>> impls = List.of(
-            new AnitonchikMap<>(),
+    private final static List<Map<UUID, Task>> impls2 = List.of(
             new BibaevRuslanMap<>(),
             new DanilKraunMap<>(),
+//            new FrostyklolMap<>(),
+            new ShamanStepanDedMap<>(),
+            new SofiaivvMap<>(16)
+    );
+
+    private final static List<Map<UUID, Task>> impls = List.of(
+            new AnitonchikMap<>(),
             new Dok3R73Map<>(),
-            new EgorMap<>(),
-            new FrostyklolMap<>(),
-            new Funa4iMap<>(),
             new KlineMolodoyMap<>(),
+            new EgorMap<>(),
+//            new Funa4iMap<>(),
             new NikitaMorozkaMap<>(16),
             new SalikhYaruskinMap<>(),
-            new ShamanStepanDedMap<>(),
-            new SofiaivvMap<>(16),
             new Vladislove073Map<>(),
             new Ya5uhiroMap<>(),
             new ZiraelcMap<>(16)
     );
 
     public static void main(String[] args) {
+        List<Task> tasks = initTasks(100000);
+        impls.forEach(impl ->
+                tasks.forEach(task ->
+                        impl.put(task.getId(), task)
+                )
+        );
 
+        impls.stream()
+                .map(impl -> impl.getClass().getName() + " : " +  impl.size())
+                .forEach(System.out::println);
+
+        Collections.shuffle(tasks);
+        System.out.println("Result");
+
+
+        impls.stream()
+                .map(impl -> {
+                    long l = System.currentTimeMillis();
+                    tasks.forEach(task -> {
+                        Task foundTask = impl.get(task.getId());
+//                if (!foundTask.getId().equals(task.getId())) {
+//                    System.out.println(impl.getClass().getName() + " works wrong!");
+//                }
+                    });
+
+                    long time = System.currentTimeMillis() - l;
+                    return impl.getClass().getName() + " : " + time;
+                })
+                .forEach(System.out::println);
+
+    }
+
+    private static List<Task> initTasks(int count) {
+        List<Task> tasks = new ArrayList<>(count);
+        for (int i = 0; i < count; i++) {
+            Task task = new Task(UUID.randomUUID(), "Task" + i);
+            tasks.add(task);
+        }
+        return tasks;
     }
 }

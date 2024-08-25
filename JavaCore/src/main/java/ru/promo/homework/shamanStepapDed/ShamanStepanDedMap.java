@@ -83,6 +83,7 @@ public class ShamanStepanDedMap<K, V> implements Map<K, V> {
                 hashTable[bucketIndex].addValue(key, value);
             }
         }
+        countElement++;
         return null;
     }
 

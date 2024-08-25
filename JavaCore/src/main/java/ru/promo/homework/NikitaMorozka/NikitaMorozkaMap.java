@@ -188,7 +188,7 @@ public class NikitaMorozkaMap<K, V> extends MyMap <K, V> implements Map<K, V> {
 
 
     private int hash(Object key) {
-        return key.hashCode();
+        return Math.abs(key.hashCode());
     }
 
     private int getBucketIndex(int hash) {
