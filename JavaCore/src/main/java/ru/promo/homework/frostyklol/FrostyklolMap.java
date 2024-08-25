@@ -8,7 +8,7 @@ public class FrostyklolMap<K, V> implements Map<K, V> {
     private Entry<K, V>[] table;
     private int size;
 
-    public void SimpleMap() {
+    public FrostyklolMap() {
         table = new Entry[START_CAPACITY];
         size = 0;
     }
