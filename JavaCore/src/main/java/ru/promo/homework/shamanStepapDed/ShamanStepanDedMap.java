@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 
-public class MyDictionary<K, V> implements Map<K, V> {
+public class ShamanStepanDedMap<K, V> implements Map<K, V> {
 
     private int DEFAULT_INITIAL_CAPACITY = 1_000_000_000;
     private final double HASH_TABLE_EXTENSION = 0.7D;
@@ -14,11 +14,11 @@ public class MyDictionary<K, V> implements Map<K, V> {
     private int size = 16;
     private BinaryTree<K, V>[] hashTable;
 
-    public MyDictionary() {
+    public ShamanStepanDedMap() {
         this.hashTable = new BinaryTree[DEFAULT_INITIAL_CAPACITY];
     }
 
-    public MyDictionary(int capacity) {
+    public ShamanStepanDedMap(int capacity) {
         if (capacity > 0) {
             DEFAULT_INITIAL_CAPACITY = capacity;
         }

@@ -19,7 +19,7 @@ public class SalikhYaruskinMap<K, V> implements Map<K, V> {
     private final ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 
     @SuppressWarnings("unchecked")
-    SalikhYaruskinMap(){
+    public SalikhYaruskinMap(){
         particles = new List[START_SIZE];
         for (int i = 0; i < particles.length; i++){
             particles[i] = new LinkedList<>();
