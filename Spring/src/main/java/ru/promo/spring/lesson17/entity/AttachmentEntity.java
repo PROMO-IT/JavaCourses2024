@@ -30,7 +30,7 @@ public class AttachmentEntity {
     @Column(name = "type", nullable = false)
     private AttachmentType type;
 
-    @Column(name = "content", unique = true)
+    @Column(name = "content")
     private String content;
 
     @ManyToOne

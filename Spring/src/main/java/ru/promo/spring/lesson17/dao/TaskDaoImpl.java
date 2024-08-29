@@ -3,10 +3,13 @@ package ru.promo.spring.lesson17.dao;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ru.promo.spring.lesson17.entity.TaskEntity;
+import ru.promo.spring.lesson17.entity.TaskType;
 import ru.promo.spring.lesson17.exception.TaskNotFoundException;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+
+import java.util.List;
 
 @Component
 public class TaskDaoImpl implements TaskDao {
@@ -24,9 +27,15 @@ public class TaskDaoImpl implements TaskDao {
     @Override
     public TaskEntity getById(Long id) {
         var task = entityManager.find(TaskEntity.class, id);
-        if (task == null) {
-            throw new TaskNotFoundException("Task with id " + id + " not found");
-        }
         return task;
     }
+
+    @Override
+    public List<TaskEntity> getByType(TaskType taskType) {
+        return entityManager.createQuery("select t from TaskEntity t where t.type = :paramType")
+                .setParameter("paramType", taskType)
+                .getResultList();
+    }
+
+
 }
