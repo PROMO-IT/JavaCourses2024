@@ -11,4 +11,6 @@ public interface TaskService {
     TaskEntity getById(Long id);
 
     List<TaskEntity> getByType(TaskType taskType);
+
+    void create();
 }

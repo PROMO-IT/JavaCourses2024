@@ -30,4 +30,9 @@ public class TaskController {
         return taskService.getByType(taskType);
     }
 
+    @PostMapping("/v2/tasks")
+    public void create() {
+        taskService.create();
+    }
+
 }
