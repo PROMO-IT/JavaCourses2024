@@ -2,6 +2,7 @@ package ru.promo.spring.lesson17.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import ru.promo.spring.lesson17.annotation.LoggingAnnotation;
 import ru.promo.spring.lesson17.dao.TaskDao;
 import ru.promo.spring.lesson17.entity.TaskEntity;
 import ru.promo.spring.lesson17.entity.TaskType;
@@ -20,11 +21,13 @@ public class TaskController {
         taskService.create(taskEntity);
     }
 
+    @LoggingAnnotation("VALUE1")
     @GetMapping("/tasks/{id}")
     public TaskEntity getById(@PathVariable("id") Long id) {
         return taskService.getById(id);
     }
 
+    @LoggingAnnotation("VALUE2")
     @GetMapping("/tasks")
     public List<TaskEntity> getByType(@RequestParam("type") TaskType taskType) {
         return taskService.getByType(taskType);
