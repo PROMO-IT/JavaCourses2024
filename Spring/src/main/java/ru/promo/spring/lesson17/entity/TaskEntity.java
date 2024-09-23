@@ -1,6 +1,9 @@
 package ru.promo.spring.lesson17.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.CascadeType;
@@ -19,6 +22,9 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "task")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class TaskEntity {
 
     @Id
