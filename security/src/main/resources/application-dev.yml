@@ -1,10 +1,10 @@
+
 spring:
   application.name: spring
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/JavaCourse2024
+    url: jdbc:postgresql://localhost:5432/shop
     username: postgres
-    password: postgre
+    password: postgres
   jpa:
     show-sql: true
     hibernate:
@@ -12,3 +12,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+token:
+  signing:
+    key: "PromoIt"
+server:
+  port: 8088
